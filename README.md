@@ -19,8 +19,9 @@
 | **IOS support is coming**    | **IOS support is coming** |
 
 
+
 ```cli
-npm i nativescript-filepicker
+npm i nativescript-custom-filepicker
 ```
 
 ### Import the plugin
