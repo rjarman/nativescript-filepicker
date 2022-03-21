@@ -1,4 +1,4 @@
-# nativescript-filepicker ![apple](https://cdn3.iconfinder.com/data/icons/picons-social/57/16-apple-32.png) ![android](https://cdn4.iconfinder.com/data/icons/logos-3/228/android-32.png)
+# nativescript-filepickers ![apple](https://cdn3.iconfinder.com/data/icons/picons-social/57/16-apple-32.png) ![android](https://cdn4.iconfinder.com/data/icons/logos-3/228/android-32.png)
 
 > Features
 
@@ -6,7 +6,7 @@
 - Can **open** file from both external and app's internal storage
 - Can get **path** from both external and app's internal storage
 - Can **copy** files to internal storage
-- **nativescript-filepicker** plugin supporting both **single** and **multiple** selection.
+- **nativescript-filepickers** plugin supporting both **single** and **multiple** selection.
 - Supports **any kinds of extensions**
 
 > Supported platforms
@@ -21,7 +21,7 @@
 
 
 ```cli
-npm i nativescript-custom-filepicker
+npm i nativescript-filepickers
 ```
 
 ### Import the plugin
@@ -29,7 +29,7 @@ npm i nativescript-custom-filepicker
 _TypeScript_
 
 ```typescript
-import { CopyTo, Create, Extensions, Modes, OpenFile } from "nativescript-filepicker";
+import { CopyTo, Create, Extensions, Modes, OpenFile } from "nativescript-filepickers";
 ```
 
 ### Create filepicker
