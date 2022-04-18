@@ -9,6 +9,33 @@
 - **nativescript-filepickers** plugin supporting both **single** and **multiple** selection.
 - Supports **any kinds of extensions**
 
+> ***(NEW)*** @1.0.3
+
+- Show **just once** and **always** options while opening file with `OpenFile(path)`
+  Example:
+  ```typescript
+  import { CopyTo, Create, Extensions, Modes, OpenFile } from "nativescript-filepickers";
+
+  const context = Create({
+      extensions: ['pdf', 'xls'],
+      mode: Modes.Single,
+  });
+  context
+      .Authorize()
+      .then(() => {
+      return context.Present();
+      })
+      .then((assets) => {
+          assets.forEach((asset) => {
+              const newPath = CopyTo(asset);
+              OpenFile(newPath);
+              this.selectedImages.push(newPath);
+              console.log("Real Path: " + asset);
+              console.log("Copied Path: " + newPath);
+          });
+      });
+  ```
+
 > Supported platforms
 
 | OS                           | Version                   |

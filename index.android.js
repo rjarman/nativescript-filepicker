@@ -279,19 +279,17 @@ export function CopyTo(_path, newPath = null) {
 }
 
 export function OpenFile(path, isAbsolute = false) {
+  const intent = new android.content.Intent(android.content.Intent.ACTION_VIEW);
   if (isAbsolute) {
     const absoluteFilePath =
       'content://' +
       knownFolders.documents().path.split('/').slice(-2)[0] +
       '/' +
       path;
-    const intent = new android.content.Intent(
-      android.content.Intent.ACTION_VIEW
-    );
     intent.setDataAndType(
       android.net.Uri.parse(absoluteFilePath),
       android.webkit.MimeTypeMap.getSingleton().getMimeTypeFromExtension(
-        path.split('.').sice(-1)[0]
+        path.split('.').slice(-1)[0]
       )
     );
     (
@@ -302,7 +300,20 @@ export function OpenFile(path, isAbsolute = false) {
       9192
     );
   } else {
-    Utils.openFile(path);
+    intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK);
+    intent.addFlags(android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION);
+    const context = Application.android.context.getApplicationContext();
+    intent.setDataAndType(
+      androidx.core.content.FileProvider.getUriForFile(
+        context,
+        `${Application.android.context.getPackageName()}.provider`,
+        new java.io.File(path)
+      ),
+      android.webkit.MimeTypeMap.getSingleton().getMimeTypeFromExtension(
+        path.split('.').slice(-1)[0]
+      )
+    );
+    context.startActivity(intent);
   }
 }
 //# sourceMappingURL=index.android.js.map
